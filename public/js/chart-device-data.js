@@ -153,26 +153,75 @@ $(document).ready(() => {
 
   const chartOptions = {
     scales: {
-      yAxes: [{
-        id: 'ppb',
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'CO2, CO, NO2, O3, VOC (ppb)',
-          display: true,
+      yAxes: [
+        {
+          id: 'CO2',
+          type: 'linear',
+          position: 'left',
+          scaleLabel: {
+            labelString: 'CO2 (ppb)',
+            display: true,
+          },
         },
-        position: 'left',
-      },
-      {
-        id: 'μg/m3',
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'PM2.5, PM10 (μg/m³)',
-          display: true,
+        {
+          id: 'CO',
+          type: 'linear',
+          position: 'left',
+          scaleLabel: {
+            labelString: 'CO (ppb)',
+            display: true,
+          },
         },
-        position: 'right',
-      }]
+        // Add configurations for NO2, O3, PM25, PM10, VOC similarly
+        {
+          id: 'NO2',
+          type: 'linear',
+          position: 'left',
+          scaleLabel: {
+            labelString: 'NO2 (ppb)',
+            display: true,
+          },
+        },
+        {
+          id: 'O3',
+          type: 'linear',
+          position: 'left',
+          scaleLabel: {
+            labelString: 'O3 (ppb)',
+            display: true,
+          },
+        },
+        {
+          id: 'PM25',
+          type: 'linear',
+          position: 'right',
+          scaleLabel: {
+            labelString: 'PM2.5 (μg/m³)',
+            display: true,
+          },
+        },
+        {
+          id: 'PM10',
+          type: 'linear',
+          position: 'right',
+          scaleLabel: {
+            labelString: 'PM10 (μg/m³)',
+            display: true,
+          },
+        },
+        {
+          id: 'VOC',
+          type: 'linear',
+          position: 'left',
+          scaleLabel: {
+            labelString: 'VOC (ppb)',
+            display: true,
+          },
+        },
+      ]
     }
   };
+  
 
   // Get the context of the canvas element we want to select
   const ctx = document.getElementById('iotChart').getContext('2d');
