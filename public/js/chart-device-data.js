@@ -157,43 +157,7 @@ $(document).ready(() => {
         id: 'CO2',
         type: 'linear',
         scaleLabel: {
-          labelString: 'CO2 (ppb)',
-          display: true,
-        },
-        position: 'left',
-      },
-      {
-        id: 'CO',
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'CO (ppb)',
-          display: true,
-        },
-        position: 'left',
-      },
-      {
-        id: 'NO2',
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'NO2 (ppb)',
-          display: true,
-        },
-        position: 'left',
-      },
-      {
-        id: 'O3',
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'O3 (ppb)',
-          display: true,
-        },
-        position: 'left',
-      },
-      {
-        id: 'VOC',
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'VOC (ppb)',
+          labelString: 'CO2, CO, NO2, O3, VOC (ppb)',
           display: true,
         },
         position: 'left',
@@ -202,16 +166,7 @@ $(document).ready(() => {
         id: 'PM2.5',
         type: 'linear',
         scaleLabel: {
-          labelString: 'PM2.5 (μg/m³)',
-          display: true,
-        },
-        position: 'right',
-      },
-      {
-        id: 'PM10',
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'PM10 (μg/m³)',
+          labelString: 'PM2.5, PM10 (μg/m³)',
           display: true,
         },
         position: 'right',
