@@ -118,7 +118,7 @@ $(document).ready(() => {
       {
         fill: false,
         label: 'PM2.5 (μg/m³)',
-        yAxisID: 'PM2.5',
+        yAxisID: 'PM25',
         borderColor: 'rgba(163, 223, 255, 1)',
         pointBoarderColor: 'rgba(163, 223, 255, 1)',
         backgroundColor: 'rgba(163, 223, 255, 0.4)',
@@ -229,7 +229,7 @@ $(document).ready(() => {
         trackedDevices.devices.push(newDeviceData);
         const numDevices = trackedDevices.getDevicesCount();
         deviceCount.innerText = numDevices === 1 ? `${numDevices} device` : `${numDevices} devices`;
-        newDeviceData.addData(messageData.MessageDate, messageData.IotData.CO2, messageData.IotData.CO, messageData.IotData.NO2, messageData.IotData.O3, messageData.IotData.PM25, messageData.IotData.PM10, messageData.IotData.VOC);
+        newDeviceData.addData(messageData.MessageDate, messageData.IotData.CO, messageData.IotData.CO2, messageData.IotData.NO2, messageData.IotData.O3, messageData.IotData.PM10, messageData.IotData.PM25, messageData.IotData.VOC);
 
         // add device to the UI list
         const node = document.createElement('option');
