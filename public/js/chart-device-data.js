@@ -172,7 +172,6 @@ $(document).ready(() => {
             display: true,
           },
         },
-        // Add configurations for NO2, O3, PM25, PM10, VOC similarly
         {
           id: 'NO2',
           type: 'linear',
