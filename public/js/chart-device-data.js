@@ -12,19 +12,34 @@ $(document).ready(() => {
       this.deviceId = deviceId;
       this.maxLen = 50;
       this.timeData = new Array(this.maxLen);
-      this.temperatureData = new Array(this.maxLen);
-      this.humidityData = new Array(this.maxLen);
+      this.CO2Data = new Array(this.maxLen);
+      this.COData = new Array(this.maxLen);
+      this.NO2Data = new Array(this.maxLen);
+      this.O3Data = new Array(this.maxLen);
+      this.PM25Data = new Array(this.maxLen);
+      this.PM10Data = new Array(this.maxLen);
+      this.VOCData = new Array(this.maxLen);
     }
 
-    addData(time, temperature, humidity) {
+    addData(time, CO2, CO, NO2, O3, PM25, PM10, VOC) {
       this.timeData.push(time);
-      this.temperatureData.push(temperature);
-      this.humidityData.push(humidity || null);
+      this.CO2Data.push(CO2);
+      this.COData.push(CO);
+      this.NO2Data.push(NO2);
+      this.O3Data.push(O3);
+      this.PM25Data.push(PM25);
+      this.PM10Data.push(PM10);
+      this.VOCData.push(VOC);
 
       if (this.timeData.length > this.maxLen) {
         this.timeData.shift();
-        this.temperatureData.shift();
-        this.humidityData.shift();
+        this.CO2Data.shift();
+        this.COData.shift();
+        this.NO2Data.shift();
+        this.O3Data.shift();
+        this.PM25Data.shift();
+        this.PM10Data.shift();
+        this.VOCData.shift();
       }
     }
   }
@@ -58,8 +73,8 @@ $(document).ready(() => {
     datasets: [
       {
         fill: false,
-        label: 'Temperature',
-        yAxisID: 'Temperature',
+        label: 'CO2 (ppb)',
+        yAxisID: 'CO2',
         borderColor: 'rgba(255, 204, 0, 1)',
         pointBoarderColor: 'rgba(255, 204, 0, 1)',
         backgroundColor: 'rgba(255, 204, 0, 0.4)',
@@ -69,8 +84,63 @@ $(document).ready(() => {
       },
       {
         fill: false,
-        label: 'Humidity',
-        yAxisID: 'Humidity',
+        label: 'CO (ppb)',
+        yAxisID: 'CO',
+        borderColor: 'rgba(255, 204, 0, 1)',
+        pointBoarderColor: 'rgba(255, 204, 0, 1)',
+        backgroundColor: 'rgba(255, 204, 0, 0.4)',
+        pointHoverBackgroundColor: 'rgba(255, 204, 0, 1)',
+        pointHoverBorderColor: 'rgba(255, 204, 0, 1)',
+        spanGaps: true,
+      },
+      {
+        fill: false,
+        label: 'NO2 (ppb)',
+        yAxisID: 'NO2',
+        borderColor: 'rgba(255, 204, 0, 1)',
+        pointBoarderColor: 'rgba(255, 204, 0, 1)',
+        backgroundColor: 'rgba(255, 204, 0, 0.4)',
+        pointHoverBackgroundColor: 'rgba(255, 204, 0, 1)',
+        pointHoverBorderColor: 'rgba(255, 204, 0, 1)',
+        spanGaps: true,
+      },
+      {
+        fill: false,
+        label: 'O3 (ppb)',
+        yAxisID: 'O3',
+        borderColor: 'rgba(24, 120, 240, 1)',
+        pointBoarderColor: 'rgba(24, 120, 240, 1)',
+        backgroundColor: 'rgba(24, 120, 240, 0.4)',
+        pointHoverBackgroundColor: 'rgba(24, 120, 240, 1)',
+        pointHoverBorderColor: 'rgba(24, 120, 240, 1)',
+        spanGaps: true,
+      },
+      {
+        fill: false,
+        label: 'PM2.5 (μg/m³)',
+        yAxisID: 'PM2.5',
+        borderColor: 'rgba(24, 120, 240, 1)',
+        pointBoarderColor: 'rgba(24, 120, 240, 1)',
+        backgroundColor: 'rgba(24, 120, 240, 0.4)',
+        pointHoverBackgroundColor: 'rgba(24, 120, 240, 1)',
+        pointHoverBorderColor: 'rgba(24, 120, 240, 1)',
+        spanGaps: true,
+      },
+      {
+        fill: false,
+        label: 'PM10 (μg/m³)',
+        yAxisID: 'PM10',
+        borderColor: 'rgba(24, 120, 240, 1)',
+        pointBoarderColor: 'rgba(24, 120, 240, 1)',
+        backgroundColor: 'rgba(24, 120, 240, 0.4)',
+        pointHoverBackgroundColor: 'rgba(24, 120, 240, 1)',
+        pointHoverBorderColor: 'rgba(24, 120, 240, 1)',
+        spanGaps: true,
+      },
+      {
+        fill: false,
+        label: 'VOC (ppb)',
+        yAxisID: 'VOC',
         borderColor: 'rgba(24, 120, 240, 1)',
         pointBoarderColor: 'rgba(24, 120, 240, 1)',
         backgroundColor: 'rgba(24, 120, 240, 0.4)',
@@ -84,19 +154,64 @@ $(document).ready(() => {
   const chartOptions = {
     scales: {
       yAxes: [{
-        id: 'Temperature',
+        id: 'CO2',
         type: 'linear',
         scaleLabel: {
-          labelString: 'Temperature (ºC)',
+          labelString: 'CO2 (ppb)',
           display: true,
         },
         position: 'left',
       },
       {
-        id: 'Humidity',
+        id: 'CO',
         type: 'linear',
         scaleLabel: {
-          labelString: 'Humidity (%)',
+          labelString: 'CO (ppb)',
+          display: true,
+        },
+        position: 'left',
+      },
+      {
+        id: 'NO2',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'NO2 (ppb)',
+          display: true,
+        },
+        position: 'left',
+      },
+      {
+        id: 'O3',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'O3 (ppb)',
+          display: true,
+        },
+        position: 'left',
+      },
+      {
+        id: 'VOC',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'VOC (ppb)',
+          display: true,
+        },
+        position: 'left',
+      },
+      {
+        id: 'PM2.5',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'PM2.5 (μg/m³)',
+          display: true,
+        },
+        position: 'right',
+      },
+      {
+        id: 'PM10',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'PM10 (μg/m³)',
           display: true,
         },
         position: 'right',
@@ -122,8 +237,13 @@ $(document).ready(() => {
   function OnSelectionChange() {
     const device = trackedDevices.findDevice(listOfDevices[listOfDevices.selectedIndex].text);
     chartData.labels = device.timeData;
-    chartData.datasets[0].data = device.temperatureData;
-    chartData.datasets[1].data = device.humidityData;
+    chartData.datasets[0].data = device.CO2Data;
+    chartData.datasets[1].data = device.COData;
+    chartData.datasets[2].data = device.NO2Data;
+    chartData.datasets[3].data = device.O3Data;
+    chartData.datasets[4].data = device.PM25Data;
+    chartData.datasets[5].data = device.PM10Data;
+    chartData.datasets[6].data = device.VOCData;
     myLineChart.update();
   }
   listOfDevices.addEventListener('change', OnSelectionChange, false);
@@ -140,7 +260,7 @@ $(document).ready(() => {
       console.log(messageData);
 
       // time and either temperature or humidity are required
-      if (!messageData.MessageDate || (!messageData.IotData.temperature && !messageData.IotData.humidity)) {
+      if (!messageData.MessageDate || (!messageData.IotData.CO2 && !messageData.IotData.CO && !messageData.IotData.NO2 && !messageData.IotData.O3 && !messageData.IotData.PM25 && !messageData.IotData.PM10 && !messageData.IotData.VOC)) {
         return;
       }
 
@@ -148,13 +268,13 @@ $(document).ready(() => {
       const existingDeviceData = trackedDevices.findDevice(messageData.DeviceId);
 
       if (existingDeviceData) {
-        existingDeviceData.addData(messageData.MessageDate, messageData.IotData.temperature, messageData.IotData.humidity);
+        existingDeviceData.addData(messageData.MessageDate, messageData.IotData.CO2, messageData.IotData.CO, messageData.IotData.NO2, messageData.IotData.O3, messageData.IotData.PM25, messageData.IotData.PM10, messageData.IotData.VOC);
       } else {
         const newDeviceData = new DeviceData(messageData.DeviceId);
         trackedDevices.devices.push(newDeviceData);
         const numDevices = trackedDevices.getDevicesCount();
         deviceCount.innerText = numDevices === 1 ? `${numDevices} device` : `${numDevices} devices`;
-        newDeviceData.addData(messageData.MessageDate, messageData.IotData.temperature, messageData.IotData.humidity);
+        newDeviceData.addData(messageData.MessageDate, messageData.IotData.CO2, messageData.IotData.CO, messageData.IotData.NO2, messageData.IotData.O3, messageData.IotData.PM25, messageData.IotData.PM10, messageData.IotData.VOC);
 
         // add device to the UI list
         const node = document.createElement('option');
